@@ -37,7 +37,7 @@ if (!API_KEY || !CHANNEL_ID) {
       title: it.snippet?.title,
       thumbnail: it.snippet?.thumbnails?.medium?.url || it.snippet?.thumbnails?.default?.url,
       publishedAt: it.snippet?.publishedAt,
-    })).filter(Boolean);
+    })).filter((item) => item.videoId);
 
     const outPath = path.join(__dirname, '..', 'data', 'videos.json');
     fs.mkdirSync(path.dirname(outPath), { recursive: true });
