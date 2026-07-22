@@ -876,6 +876,7 @@ a.tech-badge:hover {
   color: var(--text-soft);
   font: inherit;
   font-size: 0.82rem;
+  line-height: 1;
   cursor: pointer;
   transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
