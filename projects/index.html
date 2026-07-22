@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — SmirkyToaster</title>
+    <meta name="description" content="All projects by SmirkyToaster — stream tools, widgets, and more." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-grid"></div>
+
+    <div class="stage">
+      <header class="topbar">
+        <a href="../" class="brand">
+          <img src="../assets/twitch_emotes/ToasterHeart.png" alt="SmirkyToaster" class="brand-logo" />
+        </a>
+        <nav class="topbar-nav" id="topbar-nav" aria-label="Main navigation">
+          <a href="../" class="nav-link">Home</a>
+          <a href="./" class="nav-link is-active" aria-current="page">Projects</a>
+          <a href="../games/" class="nav-link">Games</a>
+        </nav>
+        <div class="topbar-actions">
+          <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle colour theme">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <a href="../" class="mobile-nav__link">Home</a>
+        <a href="./" class="mobile-nav__link is-active" aria-current="page">Projects</a>
+        <a href="../games/" class="mobile-nav__link">Games</a>
+      </div>
+
+      <main>
+        <section class="page-hero">
+          <p class="eyebrow">SmirkyToaster</p>
+          <h1 class="page-title">Projects</h1>
+          <p class="page-subtitle">Stream tools, widgets, and dev work.</p>
+        </section>
+        <div id="projects-grid" class="card-grid"></div>
+      </main>
+    </div>
+
+    <script>
+      const storageKey = "smirky-theme";
+      const toggleButton = document.getElementById("theme-toggle");
+
+      const applyTheme = (theme) => {
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem(storageKey, theme);
+      };
+
+      applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
+      toggleButton?.addEventListener("click", () => {
+        applyTheme(document.body.getAttribute("data-theme") === "dark" ? "light" : "dark");
+      });
+
+      const navToggle = document.getElementById("nav-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+
+      const closeMobileNav = () => {
+        mobileNav?.classList.remove("is-open");
+        mobileNav?.setAttribute("aria-hidden", "true");
+        navToggle?.setAttribute("aria-expanded", "false");
+        navToggle?.classList.remove("is-open");
+      };
+
+      navToggle?.addEventListener("click", () => {
+        const isOpen = mobileNav.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileNav.setAttribute("aria-hidden", String(!isOpen));
+        navToggle.classList.toggle("is-open", isOpen);
+      });
+      mobileNav?.querySelectorAll(".mobile-nav__link").forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMobileNav();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 621px)").matches) {
+          closeMobileNav();
+        }
+      });
+    </script>
+    <script src="../js/link-helpers.js"></script>
+    <script src="../js/projects-data.js"></script>
+    <script>
+      function esc(str) {
+        return String(str)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      const grid = document.getElementById("projects-grid");
+      if (grid && typeof PROJECTS !== "undefined" && PROJECTS.length) {
+        grid.innerHTML = PROJECTS.map((item) => `
+          <a class="carousel-card" href="${RouteLinks.detailRoute("", item.id)}">
+            ${item.tags?.length
+              ? `<div class="carousel-card__tags">${item.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>`
+              : ""}
+            <h3 class="carousel-card__title">${esc(item.title)}</h3>
+            <p class="carousel-card__blurb">${esc(item.blurb)}</p>
+            <span class="carousel-card__cta">Learn more →</span>
+          </a>
+        `).join("");
+      }
+    </script>
+  </body>
+</html>

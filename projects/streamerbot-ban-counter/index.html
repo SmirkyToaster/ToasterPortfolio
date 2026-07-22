@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ban Counter - SmirkyToaster</title>
+    <meta name="description" content="Ban Counter project details by SmirkyToaster." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-grid"></div>
+
+    <div class="stage">
+      <header class="topbar">
+        <a href="../../" class="brand">
+          <img src="../../assets/twitch_emotes/ToasterHeart.png" alt="SmirkyToaster" class="brand-logo" />
+        </a>
+        <nav class="topbar-nav" id="topbar-nav" aria-label="Main navigation">
+          <a href="../../" class="nav-link">Home</a>
+          <a href="../" class="nav-link is-active" aria-current="page">Projects</a>
+          <a href="../../games/" class="nav-link">Games</a>
+        </nav>
+        <div class="topbar-actions">
+          <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle colour theme">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <a href="../../" class="mobile-nav__link">Home</a>
+        <a href="../" class="mobile-nav__link is-active" aria-current="page">Projects</a>
+        <a href="../../games/" class="mobile-nav__link">Games</a>
+      </div>
+
+      <main class="detail-main">
+        <div class="detail-top-back">
+          <a class="view-all-btn" href="../">Back to Projects</a>
+        </div>
+        <section class="page-hero">
+          <p class="eyebrow">Project</p>
+          <!-- Populated from js/detail-tags.js -->
+          <h1 class="page-title" data-detail-title></h1>
+          <p class="page-subtitle" data-detail-subtitle></p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2 class="section-heading">Overview</h2>
+          </div>
+          <article class="content-panel">
+            <div class="carousel-card__tags" data-detail-tags></div>
+            <h3 class="detail-subheading">Context</h3>
+            <p>This simple tool was created for <a class="credit-link" target="_blank" rel="noopener noreferrer" href="https://twitch.tv/red_lionheartt">my friend, Red,</a> to track the amount of times he tells people he's going to ban them.</p>
+            <h3 class="detail-subheading">How It Works</h3>
+            <p>I built this tool using <a class="credit-link" target="_blank" rel="noopener noreferrer" href="https://streamer.bot">Streamer.bot</a> and custom C# code sub-actions. There are a few commands available to users:</p>
+            <ul class="feature-list">
+              <li><span><code>!ban</code> — increases the total "ban" count.</span></li>
+              <li><span><code>!ban &lt;target&gt;</code> — increases the total "ban" count, and also tracks how many times that specific chatter has been "banned."</span></li>
+              <li><span><code>!bancount</code> — displays the total ban count, and the number of bans for the user who used the command.</span></li>
+            </ul>
+            <h3 class="detail-subheading">Setup</h3>
+            <p>You can import and use this tool in your own streams using the code below.</p>
+            <div class="import-code-panel">
+              <div class="import-code-head">
+                <h3 class="panel-label">Streamer.bot Import Code</h3>
+                <button type="button" id="copy-import-code" class="import-code-copy">Copy code</button>
+              </div>
+              <p class="import-code-hint">In Streamer.bot, click Import and paste the copied code into the import box.</p>
+              <div class="import-code-manual" id="import-code-manual" hidden>
+                <textarea id="import-code" class="import-code-field" readonly spellcheck="false">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</textarea>
+                <p class="import-code-note">Automatic copy failed, select the code above and copy it manually.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const storageKey = "smirky-theme";
+      const toggleButton = document.getElementById("theme-toggle");
+
+      const applyTheme = (theme) => {
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem(storageKey, theme);
+      };
+
+      applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
+      toggleButton?.addEventListener("click", () => {
+        applyTheme(document.body.getAttribute("data-theme") === "dark" ? "light" : "dark");
+      });
+
+      const navToggle = document.getElementById("nav-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      const copyImportCodeBtn = document.getElementById("copy-import-code");
+      const importCodeField = document.getElementById("import-code");
+
+      const closeMobileNav = () => {
+        mobileNav?.classList.remove("is-open");
+        mobileNav?.setAttribute("aria-hidden", "true");
+        navToggle?.setAttribute("aria-expanded", "false");
+        navToggle?.classList.remove("is-open");
+      };
+
+      navToggle?.addEventListener("click", () => {
+        const isOpen = mobileNav.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileNav.setAttribute("aria-hidden", String(!isOpen));
+        navToggle.classList.toggle("is-open", isOpen);
+      });
+      mobileNav?.querySelectorAll(".mobile-nav__link").forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMobileNav();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 621px)").matches) {
+          closeMobileNav();
+        }
+      });
+
+      copyImportCodeBtn?.addEventListener("click", async () => {
+        if (!importCodeField) return;
+
+        const originalText = copyImportCodeBtn.textContent;
+        try {
+          await navigator.clipboard.writeText(importCodeField.value);
+          copyImportCodeBtn.textContent = "Copied";
+          setTimeout(() => {
+            copyImportCodeBtn.textContent = originalText;
+          }, 1200);
+        } catch {
+          document.getElementById("import-code-manual")?.removeAttribute("hidden");
+          importCodeField.select();
+          copyImportCodeBtn.textContent = "Press Ctrl+C";
+          setTimeout(() => {
+            copyImportCodeBtn.textContent = originalText;
+          }, 1800);
+        }
+      });
+    </script>
+    <script src="../../js/projects-data.js"></script>
+    <script src="../../js/detail-tags.js"></script>
+  </body>
+</html>
