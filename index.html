@@ -120,27 +120,7 @@
       </main>
     </div>
 
-    <script>
-      // Runs immediately to prevent theme flash
-      const storageKey = "smirky-theme";
-      const toggleButton = document.getElementById("theme-toggle");
-      const toggleLabel = toggleButton?.querySelector(".theme-toggle__label");
-
-      const applyTheme = (theme) => {
-        document.body.setAttribute("data-theme", theme);
-        localStorage.setItem(storageKey, theme);
-        if (toggleLabel) {
-          toggleLabel.textContent = theme === "dark" ? "Light mode" : "Dark mode";
-        }
-      };
-
-      applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
-
-      toggleButton?.addEventListener("click", () => {
-        const next = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        applyTheme(next);
-      });
-    </script>
+    <script src="js/nav-theme.js"></script>
     <script src="js/projects-data.js"></script>
     <script src="js/games-data.js"></script>
     <script src="js/link-helpers.js"></script>
