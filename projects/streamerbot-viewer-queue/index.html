@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viewer Queue System - SmirkyToaster</title>
+    <meta name="description" content="Viewer Queue System project details by SmirkyToaster." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-grid"></div>
+
+    <div class="stage">
+      <header class="topbar">
+        <a href="../../" class="brand">
+          <img src="../../assets/twitch_emotes/ToasterHeart.png" alt="SmirkyToaster" class="brand-logo" />
+        </a>
+        <nav class="topbar-nav" id="topbar-nav" aria-label="Main navigation">
+          <a href="../../" class="nav-link">Home</a>
+          <a href="../" class="nav-link is-active" aria-current="page">Projects</a>
+          <a href="../../games/" class="nav-link">Games</a>
+        </nav>
+        <div class="topbar-actions">
+          <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle colour theme">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <a href="../../" class="mobile-nav__link">Home</a>
+        <a href="../" class="mobile-nav__link is-active" aria-current="page">Projects</a>
+        <a href="../../games/" class="mobile-nav__link">Games</a>
+      </div>
+
+      <main class="detail-main">
+        <div class="detail-top-back">
+          <a class="view-all-btn" href="../">Back to Projects</a>
+        </div>
+        <section class="page-hero">
+          <p class="eyebrow">Project</p>
+          <!-- Populated from js/detail-tags.js -->
+          <h1 class="page-title" data-detail-title></h1>
+          <p class="page-subtitle" data-detail-subtitle></p>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2 class="section-heading">Overview</h2>
+          </div>
+          <article class="content-panel">
+            <div class="carousel-card__tags" data-detail-tags></div>
+            <h3 class="detail-subheading">Context</h3>
+            <p>This is my favourite project that I've worked on so far. My good friends <a class="credit-link" target="_blank" rel="noopener noreferrer" href="https://twitch.tv/radiant_radish_">Radish</a> and <a class="credit-link" target="_blank" rel="noopener noreferrer" href="https://twitch.tv/oblivious_onion_">Onion</a> were looking for a way to better keep track of viewers joining in on community game nights, and I created this tool to solve that problem for them.</p>
+            <h3 class="detail-subheading">What It Does</h3>
+            <p>This tool creates a full queue system using <a class="credit-link" target="_blank" rel="noopener noreferrer" href="https://streamer.bot">Streamer.bot</a> and plenty of custom C# code.</p>
+            <ul class="feature-list">
+              <li>Viewers are able to join, leave, and check their position in the queue, and are also optionally able to provide their in-game names when joining.</li>
+              <li>Streamers and moderators are able to get the next viewer from the queue, toggle when joining is open, and reset the queue entirely.</li>
+              <li>There is also a configurable queue limit to prevent too many people from joining the queue, if needed.</li>
+            </ul>
+            <h3 class="detail-subheading">Platform Support</h3>
+            <div class="carousel-card__tags">
+              <span class="tag">Twitch</span>
+              <span class="tag">Twitch Stream Together</span>
+              <span class="tag">YouTube</span>
+              <span class="tag">Multi-Streaming</span>
+            </div>
+            <p>Note: Group Mode needs to be enabled for Twitch Stream Together to function properly.</p>
+            <h3 class="detail-subheading">Overlay/Dock</h3>
+            <p>I have also started working on a custom overlay and OBS dock so streamers can see the queue visually instead of reading chat. It shows the username (and in-game name, if provided) of everyone currently queued. An early version is on the GitHub repo linked below.</p>
+            <h3 class="detail-subheading">Setup</h3>
+            <p>The full setup guide is available in the GitHub repository linked below.</p>
+            <div class="import-code-panel">
+              <div class="import-code-head">
+                <h3 class="panel-label">Streamer.bot Import Code</h3>
+                <button type="button" id="copy-import-code" class="import-code-copy">Copy code</button>
+              </div>
+              <p class="import-code-hint">In Streamer.bot, click Import and paste the copied code into the import box.</p>
+              <div class="import-code-manual" id="import-code-manual" hidden>
+                <textarea id="import-code" class="import-code-field" readonly spellcheck="false">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</textarea>
+                <p class="import-code-note">Automatic copy failed, select the code above and copy it manually.</p>
+              </div>
+            </div>
+            <div class="section-footer detail-primary-row">
+              <a class="view-all-btn view-all-btn--primary" href="https://github.com/SmirkyToaster/ViewerQueueSystem" target="_blank" rel="noopener noreferrer">
+                <svg class="view-all-btn__icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.06-.02-2.08-3.34.73-4.05-1.61-4.05-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.99-.41 3.01-.41s2.05.14 3.01.41c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.65-5.49 5.95.43.37.82 1.1.82 2.22 0 1.6-.01 2.88-.01 3.28 0 .32.21.7.82.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"></path>
+                </svg>
+                <span>Download Code and View Full Setup Instructions on GitHub</span>
+              </a>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const storageKey = "smirky-theme";
+      const toggleButton = document.getElementById("theme-toggle");
+
+      const applyTheme = (theme) => {
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem(storageKey, theme);
+      };
+
+      applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
+      toggleButton?.addEventListener("click", () => {
+        applyTheme(document.body.getAttribute("data-theme") === "dark" ? "light" : "dark");
+      });
+
+      const navToggle = document.getElementById("nav-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      const copyImportCodeBtn = document.getElementById("copy-import-code");
+      const importCodeField = document.getElementById("import-code");
+
+      const closeMobileNav = () => {
+        mobileNav?.classList.remove("is-open");
+        mobileNav?.setAttribute("aria-hidden", "true");
+        navToggle?.setAttribute("aria-expanded", "false");
+        navToggle?.classList.remove("is-open");
+      };
+
+      navToggle?.addEventListener("click", () => {
+        const isOpen = mobileNav.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileNav.setAttribute("aria-hidden", String(!isOpen));
+        navToggle.classList.toggle("is-open", isOpen);
+      });
+      mobileNav?.querySelectorAll(".mobile-nav__link").forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMobileNav();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 621px)").matches) {
+          closeMobileNav();
+        }
+      });
+
+      copyImportCodeBtn?.addEventListener("click", async () => {
+        if (!importCodeField) return;
+
+        const originalText = copyImportCodeBtn.textContent;
+        try {
+          await navigator.clipboard.writeText(importCodeField.value);
+          copyImportCodeBtn.textContent = "Copied";
+          setTimeout(() => {
+            copyImportCodeBtn.textContent = originalText;
+          }, 1200);
+        } catch {
+          document.getElementById("import-code-manual")?.removeAttribute("hidden");
+          importCodeField.select();
+          copyImportCodeBtn.textContent = "Press Ctrl+C";
+          setTimeout(() => {
+            copyImportCodeBtn.textContent = originalText;
+          }, 1800);
+        }
+      });
+    </script>
+    <script src="../../js/projects-data.js"></script>
+    <script src="../../js/detail-tags.js"></script>
+  </body>
+</html>

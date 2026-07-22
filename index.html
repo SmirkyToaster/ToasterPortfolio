@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmirkyToaster | Theme Draft</title>
+    <title>SmirkyToaster</title>
     <meta
       name="description"
-      content="A vapourwave-inspired portfolio theme draft for SmirkyToaster."
+      content="SmirkyToaster — content creator, stream tool developer, and game developer."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,47 +21,107 @@
     <div class="bg-orb orb-two"></div>
     <div class="bg-grid"></div>
 
-    <main class="stage">
+    <div class="stage">
       <header class="topbar">
-        <span class="brand">SmirkyToaster</span>
+        <img src="assets/twitch_emotes/ToasterHeart.png" alt="SmirkyToaster" class="brand-logo" />
+        <nav class="topbar-nav" id="topbar-nav" aria-label="Main navigation">
+          <a href="./" class="nav-link is-active" aria-current="page">Home</a>
+          <a href="projects/" class="nav-link">Projects</a>
+          <a href="games/" class="nav-link">Games</a>
+        </nav>
         <div class="topbar-actions">
-          <span class="status-pill">Theme draft</span>
+          <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
           <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle colour theme">
-            <span class="theme-toggle__label">Dark mode</span>
-            <span class="theme-toggle__icon"></span>
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
           </button>
         </div>
       </header>
 
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Vapourwave • Pink • Experimental</p>
-          <h1>Portfolio theme exploration</h1>
-          <p class="subtitle">
-            A soft neon shell for a future showcase. Content will arrive later;
-            this first pass is all about mood.
-          </p>
-        </div>
+      <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <a href="./" class="mobile-nav__link is-active" aria-current="page">Home</a>
+        <a href="projects/" class="mobile-nav__link">Projects</a>
+        <a href="games/" class="mobile-nav__link">Games</a>
+      </div>
 
-        <div class="preview-card" aria-label="Theme preview">
-          <div class="preview-card__header">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+      <main>
+        <!-- ── Hero ─────────────────────────────────────────────────── -->
+        <section class="hero">
+          <p class="eyebrow">Streamer &middot; Bot/Widget Developer &middot; Game Developer</p>
+          <h1 class="hero-name">SmirkyToaster</h1>
+          <div class="social-links">
+            <a href="https://twitch.tv/smirkytoaster" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitch">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+              <span>Twitch</span>
+            </a>
+            <a href="https://youtube.com/@SmirkyToaster" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>YouTube</span>
+            </a>
+            <a href="https://github.com/SmirkyToaster" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              <span>GitHub</span>
+            </a>
           </div>
-          <div class="preview-card__body">
-            <div class="panel panel-large"></div>
-            <div class="panel-row">
-              <div class="panel panel-small"></div>
-              <div class="panel panel-small"></div>
+        </section>
+
+        <!-- ── Content ───────────────────────────────────────────────── -->
+        <section id="content" class="section">
+          <div class="section-head">
+            <h2 class="section-heading">Content</h2>
+          </div>
+          <div class="content-grid">
+            <div class="content-panel">
+              <h3 class="panel-label">Twitch</h3>
+              <div id="twitch-embed" class="twitch-embed-wrap"></div>
             </div>
-            <div class="panel panel-wide"></div>
+            <div class="content-panel">
+              <h3 class="panel-label">Latest Videos</h3>
+              <div id="yt-videos" class="yt-grid">
+                <p class="placeholder-note">Loading latest videos…</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+
+        <!-- ── Projects ──────────────────────────────────────────────── -->
+        <section id="projects" class="section">
+          <div class="section-head">
+            <h2 class="section-heading">Projects</h2>
+            <div id="projects-footer" class="section-footer"></div>
+          </div>
+          <div id="projects-grid" class="featured-grid"></div>
+        </section>
+
+        <!-- ── Games ────────────────────────────────────────────────── -->
+        <section id="games" class="section">
+          <div class="section-head">
+            <h2 class="section-heading">Games</h2>
+            <div id="games-footer" class="section-footer"></div>
+          </div>
+          <div id="games-grid" class="featured-grid"></div>
+        </section>
+      </main>
+    </div>
 
     <script>
+      // Runs immediately to prevent theme flash
       const storageKey = "smirky-theme";
       const toggleButton = document.getElementById("theme-toggle");
       const toggleLabel = toggleButton?.querySelector(".theme-toggle__label");
@@ -69,19 +129,21 @@
       const applyTheme = (theme) => {
         document.body.setAttribute("data-theme", theme);
         localStorage.setItem(storageKey, theme);
-
         if (toggleLabel) {
           toggleLabel.textContent = theme === "dark" ? "Light mode" : "Dark mode";
         }
       };
 
-      const savedTheme = localStorage.getItem(storageKey);
-      applyTheme(savedTheme === "dark" ? "dark" : "light");
+      applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
 
       toggleButton?.addEventListener("click", () => {
-        const nextTheme = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        applyTheme(nextTheme);
+        const next = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        applyTheme(next);
       });
     </script>
+    <script src="js/projects-data.js"></script>
+    <script src="js/games-data.js"></script>
+    <script src="js/link-helpers.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

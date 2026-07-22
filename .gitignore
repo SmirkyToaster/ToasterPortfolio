@@ -1,3 +1,9 @@
 
 # Local theme backups
 backups/
+
+# Variant backups
+variants/
+
+# Local agent instructions
+AGENTS.md
