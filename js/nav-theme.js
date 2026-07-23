@@ -10,7 +10,7 @@
     localStorage.setItem(storageKey, theme);
   };
 
-  applyTheme(localStorage.getItem(storageKey) === "dark" ? "dark" : "light");
+  applyTheme(localStorage.getItem(storageKey) === "light" ? "light" : "dark");
   toggleButton?.addEventListener("click", () => {
     applyTheme(document.body.getAttribute("data-theme") === "dark" ? "light" : "dark");
   });
