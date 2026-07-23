@@ -8,36 +8,6 @@ const CONFIG = {
   },
 };
 
-// ─── Nav toggle (hamburger) ───────────────────────────────────────────────────
-const navToggle = document.getElementById("nav-toggle");
-const mobileNav = document.getElementById("mobile-nav");
-
-function closeMobileNav() {
-  mobileNav?.classList.remove("is-open");
-  mobileNav?.setAttribute("aria-hidden", "true");
-  navToggle?.setAttribute("aria-expanded", "false");
-  navToggle?.classList.remove("is-open");
-}
-
-navToggle?.addEventListener("click", () => {
-  const isOpen = mobileNav.classList.toggle("is-open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
-  mobileNav.setAttribute("aria-hidden", String(!isOpen));
-  navToggle.classList.toggle("is-open", isOpen);
-});
-
-mobileNav?.querySelectorAll(".mobile-nav__link").forEach((link) => {
-  link.addEventListener("click", () => {
-    closeMobileNav();
-  });
-});
-
-window.addEventListener("resize", () => {
-  if (window.matchMedia("(min-width: 621px)").matches) {
-    closeMobileNav();
-  }
-});
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function esc(str) {
   return String(str)
