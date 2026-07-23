@@ -621,8 +621,8 @@ body[data-theme="dark"] .nav-toggle:hover {
   gap: 0.5rem;
   padding: 0.55rem 1.1rem;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border: 1px solid rgba(70, 49, 88, 0.32);
+  background: rgba(255, 255, 255, 0.55);
   color: var(--text-soft);
   text-decoration: none;
   font-size: 0.9rem;
@@ -634,9 +634,18 @@ body[data-theme="dark"] .nav-toggle:hover {
 
 .social-link:hover {
   transform: translateY(-2px);
-  background: var(--surface-strong);
+  background: rgba(255, 255, 255, 0.85);
   color: var(--text);
   box-shadow: 0 0 20px var(--shadow);
+}
+
+body[data-theme="dark"] .social-link {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+body[data-theme="dark"] .social-link:hover {
+  background: var(--surface-strong);
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
