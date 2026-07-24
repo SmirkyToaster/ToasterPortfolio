@@ -4,13 +4,10 @@
 (function () {
   const storageKey = "smirky-theme";
   const toggleButton = document.getElementById("theme-toggle");
-  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  const bgByTheme = { light: "#e9d8e3", dark: "#08020f" };
 
   const applyTheme = (theme) => {
     document.body.setAttribute("data-theme", theme);
     localStorage.setItem(storageKey, theme);
-    themeColorMeta?.setAttribute("content", bgByTheme[theme]);
   };
 
   applyTheme(localStorage.getItem(storageKey) === "light" ? "light" : "dark");
