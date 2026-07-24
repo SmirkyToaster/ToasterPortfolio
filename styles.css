@@ -55,7 +55,6 @@ body[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
 }
 
 body {
