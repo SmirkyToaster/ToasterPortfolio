@@ -1,5 +1,11 @@
 (function () {
-  const { esc } = window.RouteLinks;
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
 
   function getSlug(pathname) {
     const parts = String(pathname || "")

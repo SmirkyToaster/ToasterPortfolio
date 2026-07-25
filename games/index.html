@@ -70,7 +70,11 @@
     <script src="../js/link-helpers.js"></script>
     <script src="../js/games-data.js"></script>
     <script>
-      const { esc } = RouteLinks;
+      function esc(str) {
+        return String(str)
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
 
       const grid = document.getElementById("games-grid");
       if (grid && typeof GAMES !== "undefined" && GAMES.length) {
