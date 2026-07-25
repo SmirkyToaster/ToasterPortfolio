@@ -26,9 +26,8 @@
 
 :root {
   --safe-top: env(safe-area-inset-top, 0px);
-  --safe-right: env(safe-area-inset-right, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
 }
 
 body[data-theme="dark"] {
@@ -66,7 +65,7 @@ html {
 
 body {
   margin: 0;
-  min-height: 100dvh;
+  min-height: 100vh;
   font-family: "Inter", sans-serif;
   color: var(--text);
   background:
@@ -139,7 +138,7 @@ body::before {
   padding: 2rem 1.25rem 3rem;
 }
 
-.topbar {
+/* .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,7 +150,32 @@ body::before {
   box-shadow: none;
   position: relative;
   overflow: visible;
+} */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* Safe-area padding */
+  padding-top: calc(var(--safe-top) + 0.4rem);
+  padding-left: calc(var(--safe-left) + 0.85rem);
+  padding-right: calc(var(--safe-right) + 0.85rem);
+  padding-bottom: 0.4rem;
+
+  /* Height includes safe area */
+  height: calc(56px + var(--safe-top));
+
+  /* Glass effect */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.45);
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
+
 
 .topbar::before {
   content: none;
