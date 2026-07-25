@@ -1194,6 +1194,22 @@ body:not([data-theme="dark"]) .yt-card:hover {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .section {
+    padding: 1.5rem 0 1rem;
+  }
+
+  #content.section {
+    padding-top: 1rem;
+  }
+
+  .page-hero {
+    padding: 2rem 0 1.25rem;
+  }
+
+  .hero {
+    padding: 2rem 0.5rem;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1216,10 +1232,6 @@ body:not([data-theme="dark"]) .yt-card:hover {
 
   .mobile-nav {
     display: flex;
-  }
-
-  .hero {
-    padding: 2.75rem 0.5rem;
   }
 
   .hero-name {
