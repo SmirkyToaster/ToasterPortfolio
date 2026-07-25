@@ -70,11 +70,7 @@
     <script src="../js/link-helpers.js"></script>
     <script src="../js/projects-data.js"></script>
     <script>
-      function esc(str) {
-        return String(str)
-          .replace(/&/g, "&amp;").replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-      }
+      const { esc } = RouteLinks;
 
       const grid = document.getElementById("projects-grid");
       if (grid && typeof PROJECTS !== "undefined" && PROJECTS.length) {

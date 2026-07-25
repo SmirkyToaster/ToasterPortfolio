@@ -9,13 +9,7 @@ const CONFIG = {
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-function esc(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
+const { esc } = window.RouteLinks;
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-GB", {

@@ -1,3 +1,11 @@
+function esc(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function normalizeBasePath(basePath) {
   const raw = String(basePath || "").trim();
   if (!raw) return "";
@@ -19,4 +27,5 @@ function sectionRoute(basePath) {
 window.RouteLinks = {
   detailRoute,
   sectionRoute,
+  esc,
 };
