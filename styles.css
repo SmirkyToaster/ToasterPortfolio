@@ -22,6 +22,7 @@
   --grid-glow: rgba(255, 255, 255, 0.34);
   --scanline-opacity: 0.12;
   --screen-frame: rgba(255, 255, 255, 0.18);
+  --topbar-solid: #f3ecf8;
 }
 
 :root {
@@ -53,6 +54,7 @@ body[data-theme="dark"] {
   --grid-glow: rgba(255, 255, 255, 0.12);
   --scanline-opacity: 0.22;
   --screen-frame: rgba(255, 255, 255, 0.08);
+  --topbar-solid: #0f0620;
 }
 
 * {
@@ -161,18 +163,13 @@ body::before {
   /* Height includes safe area */
   height: calc(56px + var(--safe-top));
 
-  /* Glass effect */
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.45);
+  /* Solid (not translucent) so Safari's edge-sampling tints its own
+     chrome to this exact color instead of blurring through content. */
+  background: var(--topbar-solid);
 
   position: sticky;
   top: 0;
   z-index: 50;
-}
-
-body[data-theme="dark"] .topbar {
-  background: var(--surface);
 }
 
 .topbar::before {
