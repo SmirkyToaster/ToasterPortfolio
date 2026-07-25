@@ -63,14 +63,15 @@ body[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
-  /* Solid fallback so Safari has a real color to sample under the
-     safe-area/status-bar; --bg is scoped to body[data-theme] and
-     can't cascade upward, so the dark value is mirrored here. */
-  background-color: #e9d8e3;
+  /* Matches --topbar-solid exactly, so the overscroll gap blends
+     into the navbar instead of showing a seam; --topbar-solid is
+     scoped to body[data-theme] and can't cascade upward, so the
+     dark value is mirrored here. */
+  background-color: #f3ecf8;
 }
 
 html:has(body[data-theme="dark"]) {
-  background-color: #08020f;
+  background-color: #0f0620;
 }
 
 body {
