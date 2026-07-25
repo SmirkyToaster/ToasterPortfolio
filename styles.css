@@ -67,6 +67,7 @@ html {
      safe-area/status-bar; --bg is scoped to body[data-theme] and
      can't cascade upward, so the dark value is mirrored here. */
   background-color: #e9d8e3;
+  overscroll-behavior-y: none;
 }
 
 html:has(body[data-theme="dark"]) {
@@ -84,6 +85,7 @@ body {
     linear-gradient(135deg, var(--bg), var(--bg-2));
   background-color: var(--bg);
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.03);
 }
 
