@@ -26,10 +26,10 @@
 
 :root {
   --safe-top: env(safe-area-inset-top, 0px);
-  --safe-right: env(safe-area-inset-right, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
 }
+
 
 body[data-theme="dark"] {
   --bg: #08020f;
@@ -145,9 +145,9 @@ body::before {
   justify-content: space-between;
 
   /* Safe-area padding */
+  padding-top: calc(var(--safe-top) + 0.4rem);
   padding-left: calc(var(--safe-left) + 0.85rem);
   padding-right: calc(var(--safe-right) + 0.85rem);
-  padding-top: calc(var(--safe-top) + 0.4rem);
   padding-bottom: 0.4rem;
 
   /* Height includes safe area */
@@ -158,16 +158,9 @@ body::before {
   -webkit-backdrop-filter: blur(14px);
   background: rgba(255, 255, 255, 0.45);
 
-  border: none;
-  border-radius: 0;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-
-  /* Critical: allow content under browser chrome */
   position: sticky;
   top: 0;
   z-index: 50;
-
-  transition: height 180ms ease, padding-top 180ms ease, background 180ms ease;
 }
 
 .topbar::before {
