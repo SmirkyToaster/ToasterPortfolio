@@ -4,10 +4,15 @@
 (function () {
   const storageKey = "smirky-theme";
   const toggleButton = document.getElementById("theme-toggle");
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  // Mirrors --topbar-solid from styles.css — a CSS custom property can't be
+  // read from a <meta> tag, so the two hex values are kept in sync by hand.
+  const topbarSolid = { dark: "#0f0620", light: "#f3ecf8" };
 
   const applyTheme = (theme) => {
     document.body.setAttribute("data-theme", theme);
     localStorage.setItem(storageKey, theme);
+    themeColorMeta?.setAttribute("content", topbarSolid[theme]);
   };
 
   applyTheme(localStorage.getItem(storageKey) === "light" ? "light" : "dark");
