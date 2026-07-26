@@ -1,4 +1,8 @@
 
+# Local-only docs and agent instructions
+docs/
+CLAUDE.md
+
 # Local theme backups
 backups/
 
