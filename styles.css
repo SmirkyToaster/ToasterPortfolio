@@ -148,7 +148,6 @@ body::before {
 
 .topbar {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 
@@ -158,9 +157,8 @@ body::before {
   padding-right: calc(var(--safe-right) + 0.85rem);
   padding-bottom: 0.4rem;
 
-  /* min-height (not height) so the mobile nav links can grow the header
-     in place when expanded, instead of needing a separate floating panel. */
-  min-height: var(--topbar-height);
+  /* Height includes safe area */
+  height: var(--topbar-height);
 
   /* Solid (not translucent) so Safari's edge-sampling tints its own
      chrome to this exact color instead of blurring through content. */
@@ -292,7 +290,7 @@ body[data-theme="dark"] .theme-toggle__icon--moon {
     padding-left: calc(var(--safe-left) + 0.85rem);
     padding-right: calc(var(--safe-right) + 0.85rem);
     padding-bottom: 0.8rem;
-    min-height: var(--topbar-height);
+    height: var(--topbar-height);
   }
 
   .brand {
@@ -397,35 +395,37 @@ body[data-theme="dark"] .nav-toggle:hover {
   transform: translateY(-0.4rem) rotate(-45deg);
 }
 
-/* Mobile nav links — lives inside the topbar itself (as a wrapped flex
-   child) so opening it grows the sticky header in place, on the header's
-   own solid background, rather than floating as a separate panel that has
-   to track the header's height via a synced offset. */
+/* Mobile nav links — fixed directly below the sticky topbar, on the
+   header's own solid background, so it reads as part of the header
+   without pushing page content down when it opens. Animates only
+   transform/opacity/visibility (compositor-only, no layout) instead of
+   max-height, which was forcing a full-page reflow on every frame and
+   showing up as jank on lower-end phones. */
 .mobile-nav {
   display: none;
-  flex-basis: 100%;
-  width: 100%;
+  position: fixed;
+  top: var(--topbar-height);
+  left: 0;
+  right: 0;
+  z-index: 49;
   flex-direction: column;
-  margin-top: 0;
-  padding: 0;
-  border-top: 1px solid transparent;
-  overflow: hidden;
-  max-height: 0;
+  padding: 0.6rem calc(var(--safe-right) + 0.85rem) 0.6rem calc(var(--safe-left) + 0.85rem);
+  background: var(--topbar-solid);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
   opacity: 0;
-  transform: translateY(-0.35rem);
+  transform: translateY(-0.4rem);
+  visibility: hidden;
   pointer-events: none;
-  transition: max-height 260ms ease, opacity 180ms ease, transform 220ms ease, margin-top 220ms ease, padding 220ms ease, border-color 220ms ease;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
 }
 
 .mobile-nav.is-open {
-  max-height: 15rem;
   opacity: 1;
   transform: translateY(0);
+  visibility: visible;
   pointer-events: auto;
-  margin-top: 0.6rem;
-  padding-top: 0.6rem;
-  padding-bottom: 0.4rem;
-  border-top-color: var(--border);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 0s;
 }
 
 .mobile-nav__link {
