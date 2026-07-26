@@ -148,6 +148,7 @@ body::before {
 
 .topbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 
@@ -157,8 +158,9 @@ body::before {
   padding-right: calc(var(--safe-right) + 0.85rem);
   padding-bottom: 0.4rem;
 
-  /* Height includes safe area */
-  height: var(--topbar-height);
+  /* min-height (not height) so the mobile nav links can grow the header
+     in place when expanded, instead of needing a separate floating panel. */
+  min-height: var(--topbar-height);
 
   /* Solid (not translucent) so Safari's edge-sampling tints its own
      chrome to this exact color instead of blurring through content. */
@@ -290,12 +292,7 @@ body[data-theme="dark"] .theme-toggle__icon--moon {
     padding-left: calc(var(--safe-left) + 0.85rem);
     padding-right: calc(var(--safe-right) + 0.85rem);
     padding-bottom: 0.8rem;
-    height: var(--topbar-height);
-  }
-
-  body .mobile-nav {
-    margin-left: calc(var(--safe-left) + 0.9rem);
-    margin-right: calc(var(--safe-right) + 0.9rem);
+    min-height: var(--topbar-height);
   }
 
   .brand {
@@ -400,31 +397,24 @@ body[data-theme="dark"] .nav-toggle:hover {
   transform: translateY(-0.4rem) rotate(-45deg);
 }
 
-/* Mobile nav dropdown — fixed just below the sticky topbar so it stays
-   reachable when the page is scrolled, instead of sitting at document top. */
+/* Mobile nav links — lives inside the topbar itself (as a wrapped flex
+   child) so opening it grows the sticky header in place, on the header's
+   own solid background, rather than floating as a separate panel that has
+   to track the header's height via a synced offset. */
 .mobile-nav {
   display: none;
-  position: fixed;
-  top: var(--topbar-height);
-  left: 0;
-  right: 0;
-  z-index: 49;
+  flex-basis: 100%;
+  width: 100%;
   flex-direction: column;
   margin-top: 0;
-  margin-left: calc(var(--safe-left) + 1.25rem);
-  margin-right: calc(var(--safe-right) + 1.25rem);
   padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  backdrop-filter: blur(18px);
-  background: var(--surface);
-  box-shadow: 0 12px 32px rgba(79, 48, 92, 0.1), 0 0 18px var(--shadow);
+  border-top: 1px solid transparent;
   overflow: hidden;
   max-height: 0;
   opacity: 0;
   transform: translateY(-0.35rem);
   pointer-events: none;
-  transition: max-height 260ms ease, opacity 180ms ease, transform 220ms ease, margin-top 220ms ease, padding 220ms ease;
+  transition: max-height 260ms ease, opacity 180ms ease, transform 220ms ease, margin-top 220ms ease, padding 220ms ease, border-color 220ms ease;
 }
 
 .mobile-nav.is-open {
@@ -432,8 +422,10 @@ body[data-theme="dark"] .nav-toggle:hover {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-top-color: var(--border);
 }
 
 .mobile-nav__link {
