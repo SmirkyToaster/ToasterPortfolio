@@ -11,3 +11,4 @@ variants/
 
 # Local agent instructions
 AGENTS.md
+.claude/
