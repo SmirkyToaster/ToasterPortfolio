@@ -1,27 +1,5 @@
 # SmirkyToaster
 
-A vapourwave-inspired personal portfolio for content creators, developers, and game makers.
+My personal website for my content creation, widget development, and game development!
 
-Quick file map
-- `index.html` — main page
-- `styles.css` — shared styles
-- `js/` — client-side scripts (`main.js`, `nav-theme.js`, `detail-tags.js`, `link-helpers.js`, `projects-data.js`, `games-data.js`)
-- `data/` — static data (`videos.json` from YouTube)
-- `scripts/` — build helpers (`fetch-youtube.js`)
-- `.github/workflows/` — CI/CD workflows
-- `projects/`, `games/` — list and detail pages
-- `docs/` — internal notes (launch checklist, GitHub Actions setup)
-- `CLAUDE.md` — guidance for Claude Code when working in this repo
-
-## Local preview
-```
-python -m http.server 8000
-```
-
-## Customization
-- Colors and theme variables are in `styles.css` (CSS custom properties)
-- Create detail pages in `projects/` and `games/` folders (see examples in data files)
-- Adjust the hero, sections, and card layouts in `index.html` and `styles.css`
-
-## License
-MIT
+Available at https://smirkytoaster.github.io/ToasterPortfolio/
